@@ -3,11 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const habitSlice = createSlice({
     name: 'habits',
-    initialState: [],
+    initialState: {habits: []},
     reducers: {
-        addHabit: () => {},
+        addHabit: (state, action) => {
+            const newHabit = {
+                id: Date.now().toString(),
+                name: action.payload.name,
+                frquency: action.payload.frequency,
+                completedDates: [],
+                createdAt: new Date().toISOString()
+            }
+
+            state.habits.push(newHabit)
+        },
     }
 })
 
 export const {addHabit} = habitSlice.actions
-export default habitSlice.reducer
+export default habitSlice.reducer 
