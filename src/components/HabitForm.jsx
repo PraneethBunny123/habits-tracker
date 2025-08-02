@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useState } from "react";
 
 export default function HabitForm() {
@@ -29,6 +29,13 @@ export default function HabitForm() {
                         <MenuItem value="weekly">Weekly</MenuItem>
                     </Select>
                 </FormControl>
+                <Button 
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                >
+                    Add Habit
+                </Button>
             </Box>
         </form>
     )
