@@ -1,9 +1,12 @@
 import { CheckCircle, DeleteOutline } from "@mui/icons-material"
 import { Box, Button, Grid, Paper, Typography } from "@mui/material"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { toggleHabit } from "../store/habit-slice"
 
 export default function HabitsList() {
     const {habits} = useSelector((state) => state.habits)
+
+    const dispatch = useDispatch()
 
     const today = new Date().toISOString().split("T")[0]
 
@@ -41,6 +44,7 @@ export default function HabitsList() {
                                     variant="outlined"
                                     color={habit.completedDates.includes(today) ? "success" : "primary"}
                                     startIcon={<CheckCircle />}
+                                    onClick={() => dispatch(toggleHabit({id: habit.id, date: today}))}
                                 >
                                     {habit.completedDates.includes(today) ? "Completed" : "Mark Complete"}
                                 </Button> 

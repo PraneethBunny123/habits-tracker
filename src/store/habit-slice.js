@@ -31,5 +31,5 @@ const habitSlice = createSlice({
     }
 })
 
-export const {addHabit} = habitSlice.actions
+export const {addHabit, toggleHabit} = habitSlice.actions
 export default habitSlice.reducer 
