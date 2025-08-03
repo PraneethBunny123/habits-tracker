@@ -16,6 +16,18 @@ const habitSlice = createSlice({
 
             state.habits.push(newHabit)
         },
+        toggleHabit: (state, action) => {
+            const habit = state.habits.find(habit => habit.id === action.payload.id)
+
+            if(habit) {
+                const index = habit.completedDates.indexOf(action.payload.date)
+                if(index > -1) {
+                    habit.completedDates.splice(index, 1)
+                } else {
+                    habit.completedDates.push(action.payload.date)
+                }
+            }
+        }
     }
 })
 
