@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const fetchHabits = createAsyncThunk("habits/fetchHabits",
+export const fetchHabits = createAsyncThunk("habits/fetchHabits",
     async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
 
