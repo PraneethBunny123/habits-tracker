@@ -1,5 +1,5 @@
 import { CheckCircle, DeleteOutline } from "@mui/icons-material"
-import { Box, Button, Grid, Paper, Typography } from "@mui/material"
+import { Box, Button, Grid, LinearProgress, Paper, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { removeHabit, toggleHabit } from "../store/habit-slice"
 
@@ -80,6 +80,11 @@ export default function HabitsList() {
                         <Typography variant="body2">
                             Current Streak: {getStreak(habit)} days
                         </Typography>
+                        <LinearProgress 
+                            variant="determinate"
+                            value={(getStreak(habit)/30)*100}
+                            sx={{mt:1}}
+                        />
                     </Box>
                 </Paper>
             ))}
