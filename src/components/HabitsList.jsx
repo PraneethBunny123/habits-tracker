@@ -1,7 +1,7 @@
 import { CheckCircle, DeleteOutline } from "@mui/icons-material"
 import { Box, Button, Grid, Paper, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
-import { toggleHabit } from "../store/habit-slice"
+import { removeHabit, toggleHabit } from "../store/habit-slice"
 
 export default function HabitsList() {
     const {habits} = useSelector((state) => state.habits)
@@ -52,6 +52,7 @@ export default function HabitsList() {
                                     variant="outlined"
                                     color="error"
                                     startIcon={<DeleteOutline />}
+                                    onClick={() => dispatch(removeHabit({id: habit.id}))}
                                 >
                                     Remove
                                 </Button>
