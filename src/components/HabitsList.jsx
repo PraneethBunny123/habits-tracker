@@ -24,6 +24,7 @@ export default function HabitsList() {
                 break;
             }
         }
+        return streak
     }
 
     return (
@@ -75,6 +76,11 @@ export default function HabitsList() {
                             </Box>
                         </Grid>
                     </Grid>
+                    <Box sx={{mt:2}}>
+                        <Typography variant="body2">
+                            Current Streak: {getStreak(habit)} days
+                        </Typography>
+                    </Box>
                 </Paper>
             ))}
         </Box>
