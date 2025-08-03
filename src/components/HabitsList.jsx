@@ -2,30 +2,32 @@ import { CheckCircle, DeleteOutline } from "@mui/icons-material"
 import { Box, Button, Grid, LinearProgress, Paper, Typography } from "@mui/material"
 import { useDispatch, useSelector } from "react-redux"
 import { removeHabit, toggleHabit } from "../store/habit-slice"
+import { getStreak, getTodayDate } from "../util/util"
 
 export default function HabitsList() {
     const {habits} = useSelector((state) => state.habits)
 
     const dispatch = useDispatch()
 
-    const today = new Date().toISOString().split("T")[0]
+    // const today = new Date().toISOString().split("T")[0]
+    const today = getTodayDate()
 
-    function getStreak(habit) {
-        let streak = 0;
-        const currentDate = new Date()
+    // function getStreak(habit) {
+    //     let streak = 0;
+    //     const currentDate = new Date()
 
-        while(true) {
-            const dateString = currentDate.toISOString().split('T')[0]
+    //     while(true) {
+    //         const dateString = currentDate.toISOString().split('T')[0]
 
-            if(habit.completedDates.includes(dateString)) {
-                streak++;
-                currentDate.setDate(currentDate.getDate() - 1)
-            } else {
-                break;
-            }
-        }
-        return streak
-    }
+    //         if(habit.completedDates.includes(dateString)) {
+    //             streak++;
+    //             currentDate.setDate(currentDate.getDate() - 1)
+    //         } else {
+    //             break;
+    //         }
+    //     }
+    //     return streak
+    // }
 
     return (
         <Box sx={{

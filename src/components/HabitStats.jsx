@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchHabits } from "../store/habit-slice"
 import { LinearProgress, Paper, Typography } from "@mui/material"
+import { getStreak, getTodayDate } from "../util/util"
 
 export default function HabitStats() {
     const {habits, isLoading, error} = useSelector((state) => state.habits)
@@ -13,8 +14,12 @@ export default function HabitStats() {
     }, [])
 
     function getCompletedToday() {
-        const today = new Date().toISOString().split('T')[0]
+        const today = getTodayDate()
         return habits.filter(habit => habit.completedDates.includes(today)).length
+    }
+
+    function getLongestStreak() {
+        return Math.max(...habits.map(getStreak), 0)
     }
 
     if(isLoading) {
@@ -37,7 +42,7 @@ export default function HabitStats() {
                 Completed Today: {getCompletedToday()}
             </Typography>
             <Typography variant="body1">
-                Longest Streak:
+                Longest Streak: {getLongestStreak()}
             </Typography>
         </Paper>
     )
