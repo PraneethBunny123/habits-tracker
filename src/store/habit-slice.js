@@ -27,7 +27,7 @@ const fetchHabits = createAsyncThunk("habits/fetchHabits",
 
 const habitSlice = createSlice({
     name: 'habits',
-    initialState: {habits: []},
+    initialState: {habits: [], isLoading: false, error: null},
     reducers: {
         addHabit: (state, action) => {
             const newHabit = {
@@ -57,6 +57,20 @@ const habitSlice = createSlice({
             state.habits = filteredHabits
 
         }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchHabits.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchHabits.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.habits = action.payload
+            })
+            .addCase(fetchHabits.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.error.message || "Failed to fetch habits, try again later"
+            })
     }
 })
 
