@@ -76,3 +76,4 @@ const habitSlice = createSlice({
 
 export const {addHabit, toggleHabit, removeHabit} = habitSlice.actions
 export default habitSlice.reducer 
+
