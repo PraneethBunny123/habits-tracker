@@ -21,7 +21,7 @@ export default function HabitsList() {
                     sx={{p:2}}
                 >
                     <Grid container alignItems="center" spacing={2}>
-                        <Grid item xs={12} sm={6}>
+                        <Grid xs={12} sm={6}>
                             <Typography variant="h6">{habit.name}</Typography>
                             <Typography 
                                 variant="body2"
@@ -42,7 +42,7 @@ export default function HabitsList() {
                                     color={habit.completedDates.includes(today) ? "success" : "primary"}
                                     startIcon={<CheckCircle />}
                                 >
-                                    Mark Completed
+                                    {habit.completedDates.includes(today) ? "Completed" : "Mark Complete"}
                                 </Button> 
                                 <Button 
                                     variant="outlined"

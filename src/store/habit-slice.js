@@ -9,7 +9,7 @@ const habitSlice = createSlice({
             const newHabit = {
                 id: Date.now().toString(),
                 name: action.payload.name,
-                frquency: action.payload.frequency,
+                frequency: action.payload.frequency,
                 completedDates: [],
                 createdAt: new Date().toISOString()
             }
