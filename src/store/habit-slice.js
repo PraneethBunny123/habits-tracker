@@ -1,5 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+const fetchHabits = createAsyncThunk("habits/fetchHabits",
+    async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        const mockHabits = [
+            {
+                id: '1',
+                name: 'Read',
+                frequency: 'daily',
+                completedDates: [],
+                createdAt: new Date().toISOString(),
+            },
+            {
+                id: '2',
+                name: 'Gym',
+                frequency: 'daily',
+                completedDates: [],
+                createdAt: new Date().toISOString(),
+            },
+        ]
+
+        return mockHabits
+    }
+)
 
 const habitSlice = createSlice({
     name: 'habits',
